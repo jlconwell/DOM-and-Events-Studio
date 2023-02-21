@@ -10,7 +10,7 @@ function controlRocket() {
     const shuttleBackground = document.getElementById("shuttleBackground");
     const miles = document.getElementById("spaceShuttleHeight");
     const rocketShip = document.getElementById("rocket");
-    const rocketHeight = miles.innerHTML;
+    let rocketHeight = miles.innerHTML;
     let currentHeight = Number(rocketHeight);
 
     takeoffButton.addEventListener("click", () => {
@@ -18,7 +18,7 @@ function controlRocket() {
         if (confirm) {
             flightStatus.innerHTML = "Shuttle in flight";
             shuttleBackground.style.background = "blue";
-            miles.innerHTML = "10000";
+            miles.innerHTML = currentHeight += 10000;
             rocketShip.style.top = "250px";
             rocketShip.style.left = "350px";
         };
