@@ -10,15 +10,14 @@ function controlRocket() {
     const shuttleBackground = document.getElementById("shuttleBackground");
     const miles = document.getElementById("spaceShuttleHeight");
     const rocketShip = document.getElementById("rocket");
-    let rocketHeight = miles.innerHTML;
-    let currentHeight = Number(rocketHeight);
+    let rocketHeight = 0;
 
     takeoffButton.addEventListener("click", () => {
         let confirm = window.confirm("Confirm that the shuttle is ready for takeoff");
         if (confirm) {
             flightStatus.innerHTML = "Shuttle in flight";
             shuttleBackground.style.background = "blue";
-            miles.innerHTML = currentHeight += 10000;
+            miles.innerHTML = rocketHeight += 10000;
             rocketShip.style.top = "250px";
             rocketShip.style.left = "350px";
         };
@@ -28,7 +27,8 @@ function controlRocket() {
         window.alert("The shuttle is landing. Landing gear engaged.");
         flightStatus.innerHTML = "The shuttle has landed.";
         shuttleBackground.style.background = "green";
-        miles.innerHTML = "0";
+        rocketHeight = 0
+        miles.innerHTML = rocketHeight;
         rocketShip.style.top = "250px";
         rocketShip.style.left = "350px";
     });
@@ -36,9 +36,10 @@ function controlRocket() {
     abortButton.addEventListener("click", ()=> {
         let confirmAbort = window.confirm("Confirm that you want to abort the mission.");
         if (confirmAbort) {
-            flightStatus.innertHTML = "Mission aborted.";
+            flightStatus.innerHTML = "Mission aborted.";
             shuttleBackground.style.background = "green";
-            miles.innerHTML = "0";
+            rocketHeight = 0
+            miles.innerHTML = rocketHeight;
             rocketShip.style.top = "250px";
             rocketShip.style.left = "350px";
         };
@@ -47,10 +48,11 @@ function controlRocket() {
     rocketShip.style.top = "250px";
     rocketShip.style.left = "350px";
 
+
     downButton.addEventListener("click", ()=> {
         if (parseInt(rocketShip.style.top) < 250) {
             rocketShip.style.top = parseInt(rocketShip.style.top) + 10 + 'px';
-            miles.innerHTML = currentHeight -= 10000;
+            miles.innerHTML = rocketHeight -= 10000;
             // console.log(rocketShip.style.top);
         };
     });
@@ -58,7 +60,7 @@ function controlRocket() {
     upButton.addEventListener("click", ()=> {
         if (parseInt(rocketShip.style.top) > -10) {
             rocketShip.style.top = parseInt(rocketShip.style.top) - 10 + 'px';
-            miles.innerHTML = currentHeight += 10000;
+            miles.innerHTML = rocketHeight += 10000;
             // console.log(rocketShip.style.top);
         };
     });
